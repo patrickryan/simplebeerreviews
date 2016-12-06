@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= Review
+  div
+    - each review in reviews
+      h2 #{review.site}
+      p #{review.data.title}
+      p #{review.data.imgURL}
+      - if (review.site == "Untappd")
+        h3 #{review.data.score} out of #{review.data.outOf}
+        
+      - else
+        h3 Score: #{review.data.baScore} out of #{review.data.outOf}
+        h3 Bro Score: #{review.data.broScore} out of #{review.data.outOf}
+      hr
+
