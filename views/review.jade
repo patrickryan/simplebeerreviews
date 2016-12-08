@@ -4,7 +4,7 @@ block content
   h1= Review
   div(style="text-align:center")
     h1 Results for: "#{query}"
-    h3 Average: #{avgScore}%
+    h3 Average Score: #{avgScore}%
     br
   
     - each review in reviews
@@ -13,16 +13,25 @@ block content
       p #{review.data.title}
       
       - if (review.site == "RateBeer")
-        h3 #{review.data.score} out of #{review.data.outOf}
+        - if (review.data.score)
+          h3 #{review.data.score} out of #{review.data.outOf}
+        - else
+          h3 No Score Found
         br
         
       - if (review.site == "Untappd")
-        h3 #{review.data.score} out of #{review.data.outOf}
+        - if (review.data.score)
+          h3 #{review.data.score} out of #{review.data.outOf}
+        - else
+          h3 No Score Found
         br
         
       - if (review.site == "BeerAdvocate")
-        h3 Score: #{review.data.baScore} out of #{review.data.outOf}
-        h3 Bro Score: #{review.data.broScore} out of #{review.data.outOf}
+        - if (review.data.baScore || review.data.broScore)
+          h3 Score: #{review.data.baScore} out of #{review.data.outOf}
+          h3 Bro Score: #{review.data.broScore} out of #{review.data.outOf}
+        - else
+          h3 No Score Found
         br
       
       - if (review.data.imgURL)

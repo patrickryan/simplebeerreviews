@@ -31,6 +31,12 @@ router.post('/api/beer_lookup', function (req, res) {
     
     let unScore = (un.score/5) * 100;
     let avg = Number(ba.baScore) + Number(rb.score) + Number(unScore);
+    
+    let avgs = [Number(ba.baScore),Number(rb.score),Number(unScore)];
+    let allRealAvgs = avgs.filter(function( element ) { 
+      return (element !== undefined && element !== 0);
+    });
+    
     // 95-100 = world-class
     // 90-94 = outstanding
     // 85-89 = very good
@@ -41,7 +47,7 @@ router.post('/api/beer_lookup', function (req, res) {
 
     let beerData = {
       query: beerName,
-      avgScore: Math.round(avg / 3),
+      avgScore: Math.round(avg / allRealAvgs.length),
       reviews: [
         { site: 'BeerAdvocate', data: ba}, 
         { site: 'Untappd', data: un },
