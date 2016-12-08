@@ -2,16 +2,31 @@ extends layout
 
 block content
   h1= Review
-  div
+  div(style="text-align:center")
+    h1 Results for: "#{query}"
+    h3 Average: #{avgScore}%
+    br
+  
     - each review in reviews
       h2 #{review.site}
+      span.beer-name BEER NAME:
       p #{review.data.title}
-      p #{review.data.imgURL}
+      
+      - if (review.site == "RateBeer")
+        h3 #{review.data.score} out of #{review.data.outOf}
+        br
+        
       - if (review.site == "Untappd")
         h3 #{review.data.score} out of #{review.data.outOf}
+        br
         
-      - else
+      - if (review.site == "BeerAdvocate")
         h3 Score: #{review.data.baScore} out of #{review.data.outOf}
         h3 Bro Score: #{review.data.broScore} out of #{review.data.outOf}
-      hr
+        br
+      
+      - if (review.data.imgURL)
+        img(src="#{review.data.imgURL}")
+      
+      
 

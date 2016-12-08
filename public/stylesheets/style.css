@@ -1,8 +1,48 @@
 body {
   padding: 50px;
-  font: 14px Helvetica, Arial, sans-serif;
+  font: 14px 'Roboto Mono', Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+h3 {
+  color: #9b4dca;
+}
+
+.beer-name {
+  color: #aaaaaa;
+}
+
+input[type='text'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  box-shadow: none;
+  box-sizing: inherit;
+  height: 20px;
+  padding: 9px;
+  width: 200px;
+  font-size: 15px;
+  margin-right: 10px;
+}
+
+.button {
+  background-color: #9b4dca;
+  border: 1px solid #9b4dca;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
