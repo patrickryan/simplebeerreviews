@@ -10,7 +10,7 @@ import scoreHumanized from '../services/scoreHumanized';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Beer Reviews' });
+  res.render('index', { title: 'Beer Review Aggregator' });
 });
 
 router.post('/api/beer_lookup', function (req, res) {
@@ -56,132 +56,9 @@ router.post('/api/beer_lookup', function (req, res) {
       ]
     };
     
-    console.log(beerData)
     res.render('review', beerData);
   });
-  // Promise.all([rateBeerData, beerAdvocateData, untappdData]).then(values => { 
-  //   console.log(values); // [3, 1337, "foo"] 
-  // });
-
   
-  // let allReviews = {
-  //   reviews: [
-  //     { site: 'BeerAdvocate', data: beerAdvocateData},
-  //     { site: 'Untappd', data: untappdData},
-  //     { site: 'RateBeer', data: rateBeerData}
-  //   ]
-  // };
-  
-  // res.render('review', allReviews);
-  
-  //RATEBEER.COM
-  // var rateBeerLink = "https://www.ratebeer.com/findbeer.asp?beername="+beerNameParameterized;
-  // let rateBeerData = {};
-  // console.log('Processing Rate Beer data');
-  // scrapeIt(rateBeerLink, {
-  //   beerLink: {
-  //     selector: "table > tr a",
-  //     attr: 'href',
-  //   }
-  // 
-  // }).then(page => {
-  //     // console.log(page.beerLink);
-  //     // res.send(page)
-  //     // console.log("https://www.ratebeer.com/"+page.beerLink)
-  //     scrapeIt("https://www.ratebeer.com/"+page.beerLink, {
-  //       title: ".user-header h1",
-  //       desc: ".header h2",
-  //       value: ".ratingValue",
-  //       avatar: {
-  //           selector: "#beerImg"
-  //         , attr: "src"
-  //       }
-  //     }).then(page => {
-  //         rateBeerData = page;
-  //         console.log("Found Rate Beer Data:")
-  //         console.log(_.extend(rateBeerData, {outOf: '100'}));
-  // 
-  //         // console.log(page.value);
-  //         // res.send(page)
-  //     });
-  // });
-  // 
-  // //BEERADVOCATE.COM
-  // const baLink = "https://www.beeradvocate.com/search/?q="+beerNameParameterized+"&qt=beer";
-  // let beerAdvocateData = {};
-  // console.log('Processing BA data');
-  // scrapeIt(baLink, {
-  //   beerLink: {
-  //     selector: "#ba-content ul li a",
-  //     attr: 'href',
-  //   }
-  // 
-  // }).then(page => {
-  //     // console.log(page.beerLink);
-  //     // res.send(page)
-  //     // console.log("https://www.beeradvocate.com"+page.beerLink)
-  //     scrapeIt("https://www.beeradvocate.com"+page.beerLink, {
-  //       title: '.titleBar h1',
-  //       baScore: ".ba-score",
-  //       broScore: ".ba-bro_score",
-  //       imgURL: {
-  //           selector: "#ba-content img"
-  //         , attr: "href"
-  //       }
-  //     }).then(page => {
-  //         // console.log(page.title);
-  //         // console.log(page.baScore);
-  //         // console.log(page.broScore);
-  //         // console.log(page.imgURL)
-  //         beerAdvocateData = _.extend(page, {outOf: '100'});
-  //         console.log("Found BA Data:")
-  //         console.log(_.extend(beerAdvocateData, {outOf: '100'}));
-  //         // res.send(page)
-  //     });
-  // });
-  // 
-  // var untappdLink = "https://untappd.com/search?q="+beerNameParameterized;
-  // let untappdData = {};
-  // console.log('Processing Untappd data');
-  // scrapeIt(untappdLink, {
-  //   beerLink: {
-  //     selector: ".results-container > .beer-item a",
-  //     attr: 'href',
-  //   },
-  //   // score: '.results-container > .beer-item .rating .num',
-  //   
-  // 
-  // }).then(page => {
-  //     // console.log('score is '+page.score)
-  //     // console.log(page.beerLink);
-  //     // res.send(page)
-  //     // console.log("https://untappd.com"+page.beerLink)
-  //     scrapeIt("https://untappd.com"+page.beerLink, {
-  //       title: '.b_info .name h1',
-  //       score: {
-  //         selector: ".rating .num",
-  //         convert: x => { 
-  //           return x.replace('(','').replace(')','');
-  //         }
-  //       },
-  //       imgURL: {
-  //           selector: ".b_info img"
-  //         , attr: "href"
-  //       }
-  //     }).then(page => {
-  //         // console.log(page.title);
-  //         // console.log(page.score);
-  //         // console.log(page.imgURL)
-  //         console.log("Found Untappd Data:")
-  //         untappdData = _.extend(page, {outOf: '5'});
-  //         console.log(untappdData)
-  //         
-  //         let all = { reviews: [{ site: 'BeerAdvocate', data: beerAdvocateData}, { site: 'Untappd', data: untappdData}, {site: 'RateBeer', data: rateBeerData}]}
-  //         // res.send(all)
-  //         // console.log(all)
-  //         res.render('review', all);
-  //     });
-  // });
 })
 
 module.exports = router;

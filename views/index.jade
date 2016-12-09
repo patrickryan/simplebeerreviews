@@ -1,10 +1,15 @@
 extends layout
 
 block content
-  h4= title
-  p All beers reviews in one place.
+  br
+  p Beers reviews in one place.
   div
   form(method='post', action='/api/beer_lookup')
     input(type='text', name='beerName' placeholder='Search for beer')
-    input(type="submit" value="Find Beer" class="button submit-btn")
-  
+    input(type="submit" value="Find Beer Reviews" class="button submit-btn button-clear")
+
+  script.
+    document.getElementsByTagName('form')[0].onsubmit = function () {
+      document.getElementsByClassName('button')[0].value='Searching...'
+    }
+
