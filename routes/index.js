@@ -31,20 +31,19 @@ router.post('/api/beer_lookup', function (req, res) {
     let rb =  _.extend(values[2], { outOf: "100" });
     
     let unScore = (un.score/5) * 100;
-    let avg = Number(ba.baScore) + Number(rb.score) + Number(unScore);
+    // let avg = Number(ba.baScore) + Number(rb.score) + Number(unScore);
+    let avgs = [Number(ba.baScore), Number(ba.broScore), Number(rb.score),Number(unScore)];
     
-    let avgs = [Number(ba.baScore),Number(rb.score),Number(unScore)];
-    let allRealAvgs = avgs.filter(function( element ) { 
-      return (element !== undefined && element !== 0);
+    let allRealAvgs = avgs.filter(function( element ) {
+      return (element !== undefined && element !== 0 && isNaN(element) != true);
     });
-    let finalScore = Math.round(avg / allRealAvgs.length);
-    // 95-100 = world-class
-    // 90-94 = outstanding
-    // 85-89 = very good
-    // 80-84 = good
-    // 70-79 = okay
-    // 60-69 = poor
-    // < 60 = awful​
+    
+    let sum = 0
+    _.each(allRealAvgs, function (num) {
+      sum +=num
+    })
+    
+    let finalScore = Math.round(sum / allRealAvgs.length);
 
     let beerData = {
       query: beerName,

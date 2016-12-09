@@ -26,7 +26,7 @@ export default function untappdBeerLookup(beerName) {
           selector: '.beer-page >.main >.b_info .top .basic .label img',
           attr: "src"
       },
-      votes: '.raters'
+      votes: '.raters',
     });
   });
   

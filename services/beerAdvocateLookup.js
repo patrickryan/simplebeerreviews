@@ -13,7 +13,7 @@ export default function beerAdvocateLookup(beerName) {
     }
   });
   
-  let b = a.then(page => {    
+  let b = a.then(page => {
     return scrapeIt("https://www.beeradvocate.com"+page.beerLink, {
       title: '.titleBar h1',
       baScore: ".ba-score",
