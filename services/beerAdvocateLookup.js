@@ -19,9 +19,10 @@ export default function beerAdvocateLookup(beerName) {
       baScore: ".ba-score",
       broScore: ".ba-bro_score",
       imgURL: {
-          selector: "#ba-content > img"
-        , attr: "href"
-      }
+          selector: "#ba-content img"
+        , attr: "src"
+      },
+      votes: '.ba-reviews',
     });
   });
   

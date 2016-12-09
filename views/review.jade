@@ -2,40 +2,44 @@ extends layout
 
 block content
   h1= Review
-  div(style="text-align:center")
-    h1 Results for: "#{query}"
-    h3 Average Score: #{avgScore}%
+  div
+    p Results for: "#{query}"
+    h4.purp Average Score: #{avgScore}% (#{humanizedScore})
     br
-  
+    
     - each review in reviews
-      h2 #{review.site}
-      span.beer-name BEER NAME:
-      p #{review.data.title}
-      
-      - if (review.site == "RateBeer")
-        - if (review.data.score)
-          h3 #{review.data.score} out of #{review.data.outOf}
-        - else
-          h3 No Score Found
-        br
+      .row.beer-row
+        .column.column-33
+          - if (review.data.imgURL)
+            img(src="#{review.data.imgURL}")
+        .column.column-66
+          h5 #{review.site}
+          p.beer-name #{review.data.title}
+          
+          
+          - if (review.site == "RateBeer")
+            - if (review.data.score)
+              h6.purp #{review.data.score} out of #{review.data.outOf}
+            - else
+              h6 No Score Found
+            br
+            
+          - if (review.site == "Untappd")
+            - if (review.data.score)
+              h6.purp #{review.data.score} out of #{review.data.outOf}
+            - else
+              h6 No Score Found
+            
+          - if (review.site == "BeerAdvocate")
+            - if (review.data.baScore || review.data.broScore)
+              h6.purp
+                |Score: #{review.data.baScore} out of #{review.data.outOf}<br />
+                |Bro Score: #{review.data.broScore} out of #{review.data.outOf}
+            - else
+              h6 No Score Found
+          
+          small Total Ratings: #{review.data.votes}
         
-      - if (review.site == "Untappd")
-        - if (review.data.score)
-          h3 #{review.data.score} out of #{review.data.outOf}
-        - else
-          h3 No Score Found
-        br
         
-      - if (review.site == "BeerAdvocate")
-        - if (review.data.baScore || review.data.broScore)
-          h3 Score: #{review.data.baScore} out of #{review.data.outOf}
-          h3 Bro Score: #{review.data.broScore} out of #{review.data.outOf}
-        - else
-          h3 No Score Found
-        br
-      
-      - if (review.data.imgURL)
-        img(src="#{review.data.imgURL}")
-      
-      
+        
 

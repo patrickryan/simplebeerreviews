@@ -6,6 +6,7 @@ import _ from 'underscore';
 import rateBeerLookup from '../services/rateBeerLookup';
 import beerAdvocateLookup from '../services/beerAdvocateLookup';
 import untappdBeerLookup from '../services/untappdBeerLookup';
+import scoreHumanized from '../services/scoreHumanized';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -36,7 +37,7 @@ router.post('/api/beer_lookup', function (req, res) {
     let allRealAvgs = avgs.filter(function( element ) { 
       return (element !== undefined && element !== 0);
     });
-    
+    let finalScore = Math.round(avg / allRealAvgs.length);
     // 95-100 = world-class
     // 90-94 = outstanding
     // 85-89 = very good
@@ -47,7 +48,8 @@ router.post('/api/beer_lookup', function (req, res) {
 
     let beerData = {
       query: beerName,
-      avgScore: Math.round(avg / allRealAvgs.length),
+      avgScore: finalScore,
+      humanizedScore: scoreHumanized(finalScore),
       reviews: [
         { site: 'BeerAdvocate', data: ba}, 
         { site: 'Untappd', data: un },

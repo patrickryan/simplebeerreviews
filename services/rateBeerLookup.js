@@ -21,7 +21,8 @@ export default function beerAdvocateLookup(beerName) {
             imgURL: {
                 selector: "#beerImg"
               , attr: "src"
-            }
+            },
+            votes: "#_ratingCount8"
           })
   });
   
