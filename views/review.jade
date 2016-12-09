@@ -9,10 +9,10 @@ block content
     
     - each review in reviews
       .row.beer-row
-        .column.column-33
+        .column.column-20
           - if (review.data.imgURL)
             img(src="#{review.data.imgURL}")
-        .column.column-66
+        .column.column-80
           h5 #{review.site}
           p.beer-name #{review.data.title}
           
