@@ -2,9 +2,9 @@ extends layout
 
 block content
   h4= title
-  p Welcome to #{title}. We help you find all reviews of beer in one place.
+  p All beers reviews in one place.
   div
   form(method='post', action='/api/beer_lookup')
-    input(type='text', name='beerName' placeholder='Russian River Pliny the Elder')
+    input(type='text', name='beerName' placeholder='Search for beer')
     input(type="submit" value="Find Beer" class="button submit-btn")
   

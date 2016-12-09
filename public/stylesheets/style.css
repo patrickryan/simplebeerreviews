@@ -40,3 +40,11 @@ a {
 .button:hover {
   transform: translateY(-2px);
 }
+
+input[type='text'] {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 0;
+  font-size: 17px;
+}
