@@ -5,8 +5,15 @@ block content
   p Beers reviews in one place.
   div
   form(method='post', action='/api/beer_lookup')
-    input(type='text', name='beerName' placeholder='Search for beer')
-    input(type="submit" value="Find Beer Reviews" class="button submit-btn button-clear")
+    input(type='text', name='beerName' placeholder='Search for beer', autofocus)
+    input(type="submit" value="Find Beer Reviews" class="button submit-btn button-outline")
+  
+  span.light Examples: 
+  span.ex-beer-link "Pliny the Younger"
+  |,
+  span.ex-beer-link "Avery Tweak"
+  |,
+  span.ex-beer-link "Heady Topper"
 
   script.
     document.onload = function () {

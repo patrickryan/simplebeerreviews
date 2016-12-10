@@ -18,8 +18,16 @@ a {
   color: #9b4dca;
 }
 
+.light {
+  color: #aaaaaa;
+}
+
 .beer-name {
   color: #aaaaaa;
+}
+
+.ex-beer-link {
+  /*text-decoration: underline;*/
 }
 
 .beer-row {
@@ -47,7 +55,7 @@ input[type='text'] {
   border-right: none;
   border-left: none;
   border-radius: 0;
-  font-size: 17px;
+  font: 17px 'Roboto Mono', Helvetica, Arial, sans-serif;
 }
 
 .hide-link {
