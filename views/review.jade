@@ -13,10 +13,10 @@ block content
           - if (review.data.imgURL)
             img(src="#{review.data.imgURL}")
         .column.column-80
+          //a(class="hide-link" href="javascript:void(0)") Hide Rating
           h5 #{review.site}
           p.beer-name #{review.data.title}
-          
-          
+
           - if (review.site == "RateBeer")
             - if (review.data.score)
               h6.purp #{review.data.score} out of #{review.data.outOf}

@@ -9,6 +9,10 @@ block content
     input(type="submit" value="Find Beer Reviews" class="button submit-btn button-clear")
 
   script.
+    document.onload = function () {
+      document.getElementsByClassName('button')[0].value='Find Beer Reviews'
+    }
+    
     document.getElementsByTagName('form')[0].onsubmit = function () {
       document.getElementsByClassName('button')[0].value='Searching...'
     }
