@@ -28,7 +28,7 @@ router.post('/api/beer_lookup', function (req, res) {
   Promise.all([untappdData, beerAdvocateData, rateBeerData]).then(values => {
     let un = _.extend(values[0], {outOf: "5"});
     let ba = _.extend(values[1], {outOf: '100'});
-    let rb =  _.extend(values[2], { outOf: "100" });
+    let rb = _.extend(values[2], { outOf: "100" });
     
     let unScore = (un.score/5) * 100;
     // let avg = Number(ba.baScore) + Number(rb.score) + Number(unScore);
@@ -43,7 +43,13 @@ router.post('/api/beer_lookup', function (req, res) {
       sum +=num
     })
     
-    let finalScore = Math.round(sum / allRealAvgs.length);
+    let finalScore;
+    if (allRealAvgs.length == 0) {
+      finalScore = null;
+    } else {
+      finalScore = Math.round(sum / allRealAvgs.length);
+    }
+    
 
     let beerData = {
       query: beerName,

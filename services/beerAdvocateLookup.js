@@ -29,5 +29,7 @@ export default function beerAdvocateLookup(beerName) {
   return Promise.all([a,b]).then ( result => {
     // console.log(result)
     return result[1];
-  })
+  }).catch((error) => {
+    return error;
+  });
 }

@@ -8,7 +8,8 @@
 // < 60 = awful​
 
 export default function scoreHumanized(score) {
-  
+  if (score == null || score == undefined)
+    return "";
   if (score >= 95 && score <= 100) {
     return "World Class";
   }
