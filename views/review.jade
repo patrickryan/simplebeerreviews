@@ -43,7 +43,19 @@ block content
           
           small Total Ratings: #{review.data.votes}
   
+  
   script.
+    document.onload = function () {
+      var button = document.getElementsByClassName('button')[0];
+      button.value='Find Beer Reviews';
+    }
+    
+    var input = document.getElementsByName('beerName')[0];
+    input.onkeydown = function () {
+      var button = document.getElementsByClassName('button')[0];
+      button.disabled = false;
+    }
+    
     document.getElementsByTagName('form')[0].onsubmit = function () {
       document.getElementsByClassName('button')[0].value='Searching...'
     }
