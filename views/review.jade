@@ -3,6 +3,9 @@ extends layout
 block content
   h1= Review
   div
+    form(method='post', action='/api/beer_lookup')
+      input(type='text', name='beerName' placeholder='Search for beer')
+      input(type="submit" value="Find Beer Reviews" class="button submit-btn button-clear")
     p Results for: "#{query}"
     h4.purp Average Score: #{avgScore}% (#{humanizedScore})
     br
@@ -39,7 +42,12 @@ block content
               h6 No Score Found
           
           small Total Ratings: #{review.data.votes}
-        
-        
+  
+  script.
+    document.getElementsByTagName('form')[0].onsubmit = function () {
+      document.getElementsByClassName('button')[0].value='Searching...'
+    }
+
+  
         
 
