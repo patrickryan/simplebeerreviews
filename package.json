@@ -15,6 +15,8 @@
     "jade": "~1.11.0",
     "milligram": "^1.2.3",
     "morgan": "~1.7.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "scrape-it": "^3.2.2",
     "serve-favicon": "~2.3.0"
   },
