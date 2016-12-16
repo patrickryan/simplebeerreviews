@@ -3,8 +3,8 @@ extends layout
 block content
   h1= Review
   div
-    form(method='post', action='/api/beer_lookup')
-      input(type='text', name='beerName' placeholder='Search for beer', autofocus)
+    form(method='get', action='/find')
+      input(type='text', name='beer' placeholder='Search for beer', autofocus)
       input(type="submit" value="Find Beer Reviews" class="button submit-btn button-outline")
     p Results for: "#{query}"
     h4.purp Average Score: #{avgScore}% (#{humanizedScore})
@@ -50,7 +50,7 @@ block content
       button.value='Find Beer Reviews';
     }
     
-    var input = document.getElementsByName('beerName')[0];
+    var input = document.getElementsByName('beer')[0];
     input.onkeydown = function () {
       var button = document.getElementsByClassName('button')[0];
       button.disabled = false;

@@ -13,8 +13,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Beer Review Aggregator' });
 });
 
-router.post('/api/beer_lookup', function (req, res) {
-  let beerName = req.body.beerName;
+router.get('/find', function (req, res, next) {
+  let beerName = req.query.beer;
   
   if (!beerName)
     return;
