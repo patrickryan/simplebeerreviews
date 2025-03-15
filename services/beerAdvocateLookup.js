@@ -8,8 +8,7 @@ export default function beerAdvocateLookup(beerName) {
   
   let a = scrapeIt(baLink, {
     beerLink: {
-      selector: "#ba-content ul li a",
-      attr: 'href',
+      selector: "#ba-content .muted:first-child"
     }
   });
   
@@ -27,7 +26,7 @@ export default function beerAdvocateLookup(beerName) {
   });
   
   return Promise.all([a,b]).then ( result => {
-    // console.log(result)
+    console.log(result)
     return result[1];
   }).catch((error) => {
     return error;

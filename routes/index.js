@@ -58,7 +58,7 @@ router.get('/find', function (req, res, next) {
       reviews: [
         { site: 'BeerAdvocate', data: ba}, 
         { site: 'Untappd', data: un },
-        { site: 'RateBeer', data: rb }
+        // { site: 'RateBeer', data: rb }
       ]
     };
     

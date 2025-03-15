@@ -31,6 +31,7 @@ export default function untappdBeerLookup(beerName) {
   });
   
   return Promise.all([a,b]).then ( result => {
+    debugger
     return result[1];
   }).catch((error) => {
     return error;
